@@ -1,12 +1,12 @@
 import React, { ReactElement } from "react";
 
 interface Props {
-  className: string;
+  className?: string;
   label?: string;
-  placeholder: string;
+  placeholder?: string;
   name: string;
   type?: string;
-  required: boolean;
+  required?: boolean;
   disabled?: boolean;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
@@ -22,16 +22,17 @@ export default function Input({
   onChange,
 }: Props): ReactElement {
   return (
-    <input
-      className={className}
-      placeholder={placeholder}
-      name={name}
-      type={type}
-      required={required}
-      onChange={onChange}
-      disabled={disabled}
-    >
+    <>
+      <input
+        className={className}
+        placeholder={placeholder}
+        name={name}
+        type={type}
+        required={required}
+        onChange={onChange}
+        disabled={disabled}
+      />
       <label className="inp__label">{label}</label>
-    </input>
+    </>
   );
 }
