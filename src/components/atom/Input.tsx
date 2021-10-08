@@ -23,6 +23,7 @@ export default function Input({
 }: Props): ReactElement {
   return (
     <>
+      <label className="inp__label">{label}</label>
       <input
         className={className}
         placeholder={placeholder}
@@ -32,7 +33,6 @@ export default function Input({
         onChange={onChange}
         disabled={disabled}
       />
-      <label className="inp__label">{label}</label>
     </>
   );
 }
