@@ -1,7 +1,7 @@
 import React,{ ReactElement } from 'react'
 
 interface Props{
-    className: string;
+    className?: string;
     label: string;
     type?: "button" | "reset" | "submit";
     disabled?: boolean;
