@@ -3,21 +3,27 @@ import { db } from "./firebase";
 import { collection, getDocs } from "firebase/firestore";
 
 function App() {
-  const [ingredients, setIngredients] = useState([]);
+  //TODO: remove any
+  const [ingredients, setIngredients] = useState<Array<any>>();
   const igredientsRef = collection(db, "ingredients");
 
   useEffect(() => {
     const getIngredients = async () => {
       const data = await getDocs(igredientsRef);
+
+      if (data) {
       setIngredients(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      }
     };
 
     getIngredients();
   }, []);
 
+  console.log("state is: ", ingredients);
+
   return (
     <div>
-      {ingredients.map((ingredient) => {
+      {ingredients && ingredients.map((ingredient) => {
         return (
           <div>
             <h1>Name: {ingredient.name}</h1>
