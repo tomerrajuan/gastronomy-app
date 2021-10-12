@@ -2,10 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
 import "./assets/scss/app.scss";
+import App from "./App";
 
 ReactDOM.render(
   <React.StrictMode>
-    <div className="App">Hallo world</div>
+    <App />
   </React.StrictMode>,
   document.getElementById("root"),
 );
