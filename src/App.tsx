@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { db } from "./firebase";
 import { collection, getDocs } from "firebase/firestore";
+import Table from "./components/organism/Table";
 
 function App() {
   //TODO: remove any
@@ -12,24 +13,35 @@ function App() {
       const data = await getDocs(igredientsRef);
 
       if (data) {
-      setIngredients(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        setIngredients(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       }
     };
 
     getIngredients();
-  }, []);
-
-  console.log("state is: ", ingredients);
+  }, [igredientsRef]);
 
   return (
     <div>
-      {ingredients && ingredients.map((ingredient) => {
-        return (
-          <div>
-            <h1>Name: {ingredient.name}</h1>
-          </div>
-        );
-      })}
+      {ingredients &&
+        ingredients.map((ingredient, i) => {
+          return (
+            <div key={i}>
+              <h1>Name: {ingredient.name}</h1>
+              <Table
+                data={ingredients}
+                colNames={[
+                  "category",
+                  "created at",
+                  "name",
+                  "price",
+                  "new price",
+                  "supplier",
+                  "unit",
+                ]}
+              ></Table>
+            </div>
+          );
+        })}
     </div>
   );
 }
