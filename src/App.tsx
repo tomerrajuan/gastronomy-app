@@ -21,28 +21,18 @@ function App() {
   }, [igredientsRef]);
 
   return (
-    <div>
-      {ingredients &&
-        ingredients.map((ingredient, i) => {
-          return (
-            <div key={i}>
-              <h1>Name: {ingredient.name}</h1>
-              <Table
-                data={ingredients}
-                colNames={[
-                  "category",
-                  "created at",
-                  "name",
-                  "price",
-                  "new price",
-                  "supplier",
-                  "unit",
-                ]}
-              ></Table>
-            </div>
-          );
-        })}
-    </div>
+    <Table
+      data={ingredients}
+      colNames={[
+        "category",
+        "created at",
+        "name",
+        "price",
+        "new price",
+        "supplier",
+        "unit",
+      ]}
+    ></Table>
   );
 }
 
