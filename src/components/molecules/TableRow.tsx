@@ -26,12 +26,20 @@ export default function TableRow({
 
       {!isHeader &&
         data &&
-        data.map((document: any, i: React.Key | null | undefined) => (
+        Object.values(data).map((obj: any, i: any) => (
           <tr key={i}>
-            <td>{document.name}</td>
-            <td>{document.category}</td>
+            {Object.values(obj).map((item: any, k: any) => (
+              <td key={k}>{item}</td>
+            ))}
           </tr>
         ))}
     </>
   );
+}
+
+{
+  /* <tr key={i}>
+<td>{document.name}</td>
+<td>{document.category}</td>
+</tr> */
 }

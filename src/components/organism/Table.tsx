@@ -3,7 +3,13 @@ import { useTable } from "react-table";
 import { ingredientsCol } from "../../data/columns";
 
 interface Props {
+<<<<<<< HEAD
   tableData: any;
+=======
+  className?: string;
+  data: Array<Object>;
+  colNames: string[];
+>>>>>>> 3479df4... [GMA-29] render tableRow using map
 }
 
 function Table({ tableData }: Props): ReactElement {

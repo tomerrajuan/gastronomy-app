@@ -9,7 +9,13 @@ import "./assets/scss/app.scss";
 >>>>>>> f3a77d7... [GMA-29] remove unnecessary code
 
 function App() {
+<<<<<<< HEAD
   const [ingredients, setIngredients] = useState<Array<Object>>();
+=======
+  //TODO: remove any
+  const [ingredients, setIngredients] = useState<Array<Object>>();
+  const igredientsRef = collection(db, "ingredients");
+>>>>>>> 3479df4... [GMA-29] render tableRow using map
 
   useEffect(() => {
     getIngredients(db).then((result) => {
@@ -17,6 +23,7 @@ function App() {
     });
   }, [db]);
 
+<<<<<<< HEAD
   const data = React.useMemo(
     () => [
       {
@@ -33,6 +40,35 @@ function App() {
       },
     ],
     [],
+=======
+      if (data) {
+        setIngredients(data.docs.map((doc) => doc.data()));
+      }
+    };
+
+    getIngredients();
+  }, [igredientsRef]);
+
+  console.log("ingredients are: ", ingredients);
+
+  return (
+    <>
+      {ingredients && (
+        <Table
+          data={ingredients}
+          colNames={[
+            "category",
+            "created at",
+            "name",
+            "price",
+            "new price",
+            "supplier",
+            "unit",
+          ]}
+        />
+      )}
+    </>
+>>>>>>> 3479df4... [GMA-29] render tableRow using map
   );
 
   return <>{ingredients && <Table tableData={ingredients} />}</>;
