@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import { db } from "./firebase/config";
 import { collection, Firestore, getDocs } from "firebase/firestore";
 import Table from "./components/organism/Table";
+<<<<<<< HEAD
 import { getIngredients } from "./firebase/useFirestore";
+=======
+import "./assets/scss/app.scss";
+>>>>>>> f3a77d7... [GMA-29] remove unnecessary code
 
 function App() {
   const [ingredients, setIngredients] = useState<Array<Object>>();

@@ -16,10 +16,10 @@ export default function TableRow({
   return (
     <>
       {isHeader && (
-        <tr>
+        <tr className="table-header">
           {colNames &&
             colNames.map((item, index) => (
-              <th key={index}>{item.toUpperCase()}</th>
+              <th className="table-header__item" key={index}>{item.toUpperCase()}</th>
             ))}
         </tr>
       )}
