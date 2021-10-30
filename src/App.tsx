@@ -1,39 +1,40 @@
 import React, { useState, useEffect } from "react";
-import { db } from "./firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { db } from "./firebase/config";
+import { collection, Firestore, getDocs } from "firebase/firestore";
 import Table from "./components/organism/Table";
+import { getIngredients } from "./firebase/useFirestore";
 
 function App() {
-  //TODO: remove any
-  const [ingredients, setIngredients] = useState<Array<any>>();
-  const igredientsRef = collection(db, "ingredients");
+  // TODO: remove any
+  const [ingredients, setIngredients] = useState<Array<Object>>();
 
   useEffect(() => {
-    const getIngredients = async () => {
-      const data = await getDocs(igredientsRef);
+    getIngredients(db).then((result) => {
+      setIngredients(result);
+    });
+  }, [db]);
 
-      if (data) {
-        setIngredients(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      }
-    };
-
-    getIngredients();
-  }, [igredientsRef]);
-
-  return (
-    <Table
-      data={ingredients}
-      colNames={[
-        "category",
-        "created at",
-        "name",
-        "price",
-        "new price",
-        "supplier",
-        "unit",
-      ]}
-    ></Table>
+  const data = React.useMemo(
+    () => [
+      {
+        col1: "Hello",
+        col2: "World",
+      },
+      {
+        col1: "react-table",
+        col2: "rocks",
+      },
+      {
+        col1: "whatever",
+        col2: "you want",
+      },
+    ],
+    [],
   );
+
+  console.log("data is: ", data);
+
+  return <>{data && <Table tableData={data} />}</>;
 }
 
 export default App;
