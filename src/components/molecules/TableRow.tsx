@@ -2,44 +2,17 @@ import React from "react";
 
 interface Props {
   className?: string;
-  data?: any;
-  colNames?: string[];
-  isHeader: boolean;
+  rowItem?: any;
 }
 
-export default function TableRow({
-  className,
-  data,
-  colNames,
-  isHeader,
-}: Props) {
+export default function TableRow({ rowItem, className }: Props) {
   return (
-    <>
-      {isHeader && (
-        <tr className="table-header">
-          {colNames &&
-            colNames.map((item, index) => (
-              <th className="table-header__item" key={index}>{item.toUpperCase()}</th>
-            ))}
-        </tr>
-      )}
-
-      {!isHeader &&
-        data &&
-        Object.values(data).map((obj: any, i: any) => (
-          <tr key={i}>
-            {Object.values(obj).map((item: any, k: any) => (
-              <td key={k}>{item}</td>
-            ))}
-          </tr>
-        ))}
-    </>
+    <tr className={className} {...rowItem.getRowProps()}>
+      {rowItem.cells.map((cell: any) => (
+        <td className="ingredients-table-row__item" {...cell.getCellProps()}>
+          {cell.render("Cell")}
+        </td>
+      ))}
+    </tr>
   );
-}
-
-{
-  /* <tr key={i}>
-<td>{document.name}</td>
-<td>{document.category}</td>
-</tr> */
 }
