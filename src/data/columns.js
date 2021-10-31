@@ -17,7 +17,7 @@ export const ingredientsCol = [
   },
   {
     Header: "Updated",
-    accessor: "created_at",
+    accessor: "created_at.seconds",
   },
   {
     Header: "Supplier",

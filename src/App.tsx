@@ -5,7 +5,6 @@ import Table from "./components/organism/Table";
 import { getIngredients } from "./firebase/useFirestore";
 
 function App() {
-  // TODO: remove any
   const [ingredients, setIngredients] = useState<Array<Object>>();
 
   useEffect(() => {
@@ -32,9 +31,7 @@ function App() {
     [],
   );
 
-  console.log("data is: ", data);
-
-  return <>{data && <Table tableData={data} />}</>;
+  return <>{ingredients && <Table tableData={ingredients} />}</>;
 }
 
 export default App;

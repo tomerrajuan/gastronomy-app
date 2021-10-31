@@ -54,7 +54,6 @@ function Table({ tableData }: Props): ReactElement {
                     {
                       // Loop over the rows cells
                       row.cells.map((cell) => {
-                        // Apply the cell props
                         return (
                           <td {...cell.getCellProps()}>
                             {
