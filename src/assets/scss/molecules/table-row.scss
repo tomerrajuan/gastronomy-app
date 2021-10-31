@@ -1,7 +1,16 @@
-.table-header {
-  border: 1px solid !important;
+.ingredients-table {
+  &-header {
+    border-right: 1px solid;
+    padding: 5px 10px;
+  }
 
-  &__item {
-    font-family: sans-serif;
+  &-row {
+    &__item {
+      min-width: 70px;
+      max-width: 100px;
+      padding: 3px 10px;
+      border: 1px solid;
+      text-align: center;
+    }
   }
 }
