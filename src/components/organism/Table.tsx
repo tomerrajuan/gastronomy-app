@@ -6,9 +6,10 @@ import TableRow from "../molecules/TableRow";
 
 interface Props {
   tableData: any;
+  className: string;
 }
 
-function Table({ tableData }: Props): ReactElement {
+function Table({ tableData, className }: Props): ReactElement {
   const data = React.useMemo(() => tableData, []);
   const columns = React.useMemo<Column<{}>[]>(() => ingredientsCol, []);
 
@@ -18,7 +19,7 @@ function Table({ tableData }: Props): ReactElement {
   return (
     <>
       {tableData && (
-        <table className="ingrediets-table" {...getTableProps()}>
+        <table className={className} {...getTableProps()}>
           <thead>
             {headerGroups.map((headerGroup) => (
               <TableHeader

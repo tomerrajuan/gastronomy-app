@@ -14,7 +14,9 @@ function App() {
 
   return (
     <div className="App">
-      {ingredients && <Table tableData={ingredients} />}
+      {ingredients && (
+        <Table className="ingrediets-table" tableData={ingredients} />
+      )}
     </div>
   );
 }
