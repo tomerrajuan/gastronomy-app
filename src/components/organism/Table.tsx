@@ -10,8 +10,6 @@ interface Props {
 
 function Table({ tableData }: Props): ReactElement {
   const data = React.useMemo(() => tableData, []);
-  console.log("data: ", tableData);
-
   const columns = React.useMemo<Column<{}>[]>(() => ingredientsCol, []);
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
