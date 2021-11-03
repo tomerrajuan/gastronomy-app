@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { db } from "./firebase/config";
 import Table from "./components/organism/Table";
 import { getIngredients } from "./firebase/useFirestore";
+import { DocumentData } from "firebase/firestore";
 
 function App() {
-  const [ingredients, setIngredients] = useState<Array<Object>>();
+  const [ingredients, setIngredients] = useState<DocumentData[]>();
 
   useEffect(() => {
     getIngredients(db).then((result) => {
