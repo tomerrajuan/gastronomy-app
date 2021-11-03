@@ -12,6 +12,7 @@ interface Props {
 
 function Table({ tableData, className }: Props): ReactElement {
   const data = React.useMemo(() => tableData, []);
+
   const columns = React.useMemo<Column<DocumentData>[]>(
     () => ingredientsCol,
     [],
@@ -26,18 +27,13 @@ function Table({ tableData, className }: Props): ReactElement {
         <table className={className} {...getTableProps()}>
           <thead>
             {headerGroups.map((headerGroup) => (
-              <TableHeader
-                headerGroup={headerGroup}
-                className="ingredients-table-row"
-              />
+              <TableHeader headerGroup={headerGroup} className={className} />
             ))}
           </thead>
           <tbody {...getTableBodyProps()}>
             {rows.map((row) => {
               prepareRow(row);
-              return (
-                <TableRow rowItem={row} className="ingredients-table-row" />
-              );
+              return <TableRow rowItem={row} className={className} />;
             })}
           </tbody>
         </table>

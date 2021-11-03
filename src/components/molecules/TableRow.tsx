@@ -9,7 +9,7 @@ export default function TableRow({ rowItem, className }: Props) {
   return (
     <tr className={className} {...rowItem.getRowProps()}>
       {rowItem.cells.map((cell: any) => (
-        <td className="ingredients-table-row__item" {...cell.getCellProps()}>
+        <td className={className + "-row__item"} {...cell.getCellProps()}>
           {cell.render("Cell")}
         </td>
       ))}
