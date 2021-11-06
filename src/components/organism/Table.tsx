@@ -1,18 +1,22 @@
+import { DocumentData } from "firebase/firestore";
 import React, { ReactElement } from "react";
-import { useTable } from "react-table";
+import { Column, useTable } from "react-table";
 import { ingredientsCol } from "../../data/columns";
 import TableHeader from "../molecules/TableHeader";
 import TableRow from "../molecules/TableRow";
 
 interface Props {
-  tableData: any;
+  tableData: DocumentData[];
+  className: string;
 }
 
-function Table({ tableData }: Props): ReactElement {
+function Table({ tableData, className }: Props): ReactElement {
   const data = React.useMemo(() => tableData, []);
-  console.log("data: ", tableData);
 
-  const columns = React.useMemo<any>(() => ingredientsCol, []);
+  const columns = React.useMemo<Column<DocumentData>[]>(
+    () => ingredientsCol,
+    [],
+  );
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data });
@@ -20,21 +24,16 @@ function Table({ tableData }: Props): ReactElement {
   return (
     <>
       {tableData && (
-        <table className="ingrediets-table" {...getTableProps()}>
+        <table className={className} {...getTableProps()}>
           <thead>
             {headerGroups.map((headerGroup) => (
-              <TableHeader
-                headerGroup={headerGroup}
-                className="ingredients-table-row"
-              />
+              <TableHeader headerGroup={headerGroup} className={className} />
             ))}
           </thead>
           <tbody {...getTableBodyProps()}>
             {rows.map((row) => {
               prepareRow(row);
-              return (
-                <TableRow rowItem={row} className="ingredients-table-row" />
-              );
+              return <TableRow rowItem={row} className={className} />;
             })}
           </tbody>
         </table>
