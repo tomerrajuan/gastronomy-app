@@ -11,14 +11,7 @@ export const ingredientsCol = [
     Header: "Price",
     accessor: "price",
   },
-  {
-    Header: "New price",
-    accessor: "new_price",
-  },
-  {
-    Header: "Updated",
-    accessor: "created_at.seconds",
-  },
+
   {
     Header: "Supplier",
     accessor: "supplier",
@@ -26,5 +19,9 @@ export const ingredientsCol = [
   {
     Header: "Category",
     accessor: "category",
+  },
+  {
+    Header: "Updated",
+    accessor: "created_at",
   },
 ];

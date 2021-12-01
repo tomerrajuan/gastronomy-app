@@ -6,9 +6,19 @@ import TableRow from "../molecules/TableRow";
 
 interface Props {
   tableData: any;
+  tableClass: string;
+  trClass: string;
+  tdClass: string;
+  thClass: string;
 }
 
-function Table({ tableData }: Props): ReactElement {
+function Table({
+  tableData,
+  tableClass,
+  trClass,
+  tdClass,
+  thClass,
+}: Props): ReactElement {
   const data = React.useMemo(() => tableData, []);
   console.log("data: ", tableData);
 
@@ -20,20 +30,17 @@ function Table({ tableData }: Props): ReactElement {
   return (
     <>
       {tableData && (
-        <table className="ingrediets-table" {...getTableProps()}>
+        <table className={tableClass} {...getTableProps()}>
           <thead>
             {headerGroups.map((headerGroup) => (
-              <TableHeader
-                headerGroup={headerGroup}
-                className="ingredients-table-row"
-              />
+              <TableHeader headerGroup={headerGroup} className={thClass} />
             ))}
           </thead>
           <tbody {...getTableBodyProps()}>
             {rows.map((row) => {
               prepareRow(row);
               return (
-                <TableRow rowItem={row} className="ingredients-table-row" />
+                <TableRow rowItem={row} className={trClass} tdClass={tdClass} />
               );
             })}
           </tbody>
