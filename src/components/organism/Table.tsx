@@ -1,5 +1,6 @@
+import { DocumentData } from "firebase/firestore";
 import React, { ReactElement } from "react";
-import { useTable } from "react-table";
+import { Column, useTable } from "react-table";
 import { ingredientsCol } from "../../data/columns";
 import TableHeader from "../molecules/TableHeader";
 import TableRow from "../molecules/TableRow";
@@ -20,9 +21,11 @@ function Table({
   thClass,
 }: Props): ReactElement {
   const data = React.useMemo(() => tableData, []);
-  console.log("data: ", tableData);
 
-  const columns = React.useMemo<any>(() => ingredientsCol, []);
+  const columns = React.useMemo<Column<DocumentData>[]>(
+    () => ingredientsCol,
+    [],
+  );
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data });
