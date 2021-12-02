@@ -1,16 +1,29 @@
 .ingredients-table {
   &-header {
-    border-right: 1px solid;
-    padding: 5px 10px;
+    background-color: #1a73e8;
+    color: #ffffff;
+    text-align: center;
+    padding: 12px 15px;
   }
 
   &-row {
+    border-bottom: 1px solid #dddddd;
     &__item {
-      min-width: 70px;
-      max-width: 100px;
-      padding: 3px 10px;
-      border: 1px solid;
+      min-width: 50px;
+      max-width: 200px;
+
+      padding: 15px 18px;
       text-align: center;
+    }
+    &:nth-of-type(even) {
+      background-color: #f3f3f3;
+    }
+    &:last-of-type {
+      border-bottom: 2px solid #1a73e8;
+    }
+    &:hover {
+      // color: #1a73e8;
+      background-color: #d0e6ff;
     }
   }
 }

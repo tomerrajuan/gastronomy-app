@@ -6,11 +6,20 @@ import TableHeader from "../molecules/TableHeader";
 import TableRow from "../molecules/TableRow";
 
 interface Props {
-  tableData: DocumentData[];
-  className: string;
+  tableData: any;
+  tableClass: string;
+  trClass: string;
+  tdClass: string;
+  thClass: string;
 }
 
-function Table({ tableData, className }: Props): ReactElement {
+function Table({
+  tableData,
+  tableClass,
+  trClass,
+  tdClass,
+  thClass,
+}: Props): ReactElement {
   const data = React.useMemo(() => tableData, []);
 
   const columns = React.useMemo<Column<DocumentData>[]>(
@@ -24,16 +33,18 @@ function Table({ tableData, className }: Props): ReactElement {
   return (
     <>
       {tableData && (
-        <table className={className} {...getTableProps()}>
+        <table className={tableClass} {...getTableProps()}>
           <thead>
             {headerGroups.map((headerGroup) => (
-              <TableHeader headerGroup={headerGroup} className={className} />
+              <TableHeader headerGroup={headerGroup} className={thClass} />
             ))}
           </thead>
           <tbody {...getTableBodyProps()}>
             {rows.map((row) => {
               prepareRow(row);
-              return <TableRow rowItem={row} className={className} />;
+              return (
+                <TableRow rowItem={row} className={trClass} tdClass={tdClass} />
+              );
             })}
           </tbody>
         </table>

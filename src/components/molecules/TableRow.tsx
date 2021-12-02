@@ -2,14 +2,15 @@ import React from "react";
 
 interface Props {
   className?: string;
+  tdClass?: string;
   rowItem?: any;
 }
 
-export default function TableRow({ rowItem, className }: Props) {
+export default function TableRow({ rowItem, className, tdClass }: Props) {
   return (
     <tr className={className} {...rowItem.getRowProps()}>
       {rowItem.cells.map((cell: any) => (
-        <td className={className + "-row__item"} {...cell.getCellProps()}>
+        <td className={tdClass} {...cell.getCellProps()}>
           {cell.render("Cell")}
         </td>
       ))}
