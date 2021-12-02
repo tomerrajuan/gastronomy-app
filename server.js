@@ -1,15 +1,13 @@
 const express = require("express");
-const app = express();
 const cors = require("cors");
 const db = require("./db");
+const app = express();
 
 //middleware
-
 app.use(cors());
 app.use(express.json());
 
 //routes
-
 app.get("/ingredients", (req, res) => {
   db.getIngredients()
     .then((result) => {
@@ -17,7 +15,7 @@ app.get("/ingredients", (req, res) => {
       res.json(result.rows);
     })
     .catch((err) => {
-      console.log("cant find ingredients", err);
+      console.log("Error at get ingredients: ", err);
     });
 });
 
