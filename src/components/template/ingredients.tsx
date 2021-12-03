@@ -27,7 +27,7 @@ function Ingredients() {
       {ingredients && (
         <Table
           tableData={ingredients}
-          tableClass="ingredients-table"
+          className="ingredients-table"
           trClass="ingredients-table-row"
           tdClass="ingredients-table-row__item"
           thClass="ingredients-table-header"
