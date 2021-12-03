@@ -5,17 +5,18 @@ import { ingredientsCol } from "../../data/columns";
 import TableHeader from "../molecules/TableHeader";
 import TableRow from "../molecules/TableRow";
 
+// TODO: remove optional props
 interface Props {
   tableData: any;
-  tableClass: string;
-  trClass: string;
-  tdClass: string;
-  thClass: string;
+  className: string;
+  trClass?: string;
+  tdClass?: string;
+  thClass?: string;
 }
 
 function Table({
   tableData,
-  tableClass,
+  className,
   trClass,
   tdClass,
   thClass,
@@ -33,7 +34,7 @@ function Table({
   return (
     <>
       {tableData && (
-        <table className={tableClass} {...getTableProps()}>
+        <table className={className} {...getTableProps()}>
           <thead>
             {headerGroups.map((headerGroup) => (
               <TableHeader headerGroup={headerGroup} className={thClass} />
