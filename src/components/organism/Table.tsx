@@ -33,7 +33,7 @@ function Table({
 
   return (
     <>
-      {tableData && (
+      {data && (
         <table className={className} {...getTableProps()}>
           <thead>
             {headerGroups.map((headerGroup) => (
@@ -44,7 +44,7 @@ function Table({
             {rows.map((row) => {
               prepareRow(row);
               return (
-                <TableRow rowItem={row} className={trClass} tdClass={tdClass} />
+                <TableRow rowItem={row} trClass={trClass} tdClass={tdClass} />
               );
             })}
           </tbody>

@@ -1,14 +1,14 @@
 import React from "react";
 
 interface Props {
-  className?: string;
+  trClass?: string;
   tdClass?: string;
   rowItem?: any;
 }
 
-export default function TableRow({ rowItem, className, tdClass }: Props) {
+export default function TableRow({ rowItem, trClass, tdClass }: Props) {
   return (
-    <tr className={className} {...rowItem.getRowProps()}>
+    <tr className={trClass} {...rowItem.getRowProps()}>
       {rowItem.cells.map((cell: any) => (
         <td className={tdClass} {...cell.getCellProps()}>
           {cell.render("Cell")}
