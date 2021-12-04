@@ -5,7 +5,7 @@ import axios from "axios";
 function Ingredients() {
   const [ingredients, setIngredients] = useState<Array<Object>>();
 
-  const getIngredients = () => {
+  useEffect(() => {
     axios
       .get("http://localhost:3000/ingredients")
       .then(({ data }) => {
@@ -15,10 +15,6 @@ function Ingredients() {
       .catch((err) => {
         console.log("cant find ingredients", err);
       });
-  };
-
-  useEffect(() => {
-    getIngredients();
   }, []);
 
   return (
