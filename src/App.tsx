@@ -1,23 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { db } from "./firebase/config";
-import Table from "./components/organism/Table";
-import { getIngredients } from "./firebase/useFirestore";
-import { DocumentData } from "firebase/firestore";
+import React from "react";
+
+import Ingredients from "./components/template/ingredients";
 
 function App() {
-  const [ingredients, setIngredients] = useState<DocumentData[]>();
-
-  useEffect(() => {
-    getIngredients(db).then((result) => {
-      setIngredients(result);
-    });
-  }, [db]);
-
   return (
     <div className="App">
-      {ingredients && (
-        <Table className="ingredients-table" tableData={ingredients} />
-      )}
+      <Ingredients />
     </div>
   );
 }
