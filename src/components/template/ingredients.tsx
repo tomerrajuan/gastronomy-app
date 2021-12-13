@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Table from "../organism/Table";
 import axios from "axios";
-<<<<<<< HEAD
 import Input from "../atom/Input";
 import DeleteItem from "../molecules/DeleteItem";
-=======
 import Button from "../atom/Button";
->>>>>>> 00e9b52... [GMA-28] add ingredient basic button
 
 function Ingredients() {
   const [ingredients, setIngredients] = useState<Array<Object>>();
@@ -57,38 +54,6 @@ function Ingredients() {
 
   return (
     <>
-<<<<<<< HEAD
-      <Input
-        name={"search"}
-        onChange={(event) => setSearchInput(event.target.value)}
-        placeholder="Search..."
-      />
-      {error && <p>No item is found!</p>}
-
-      <div className="wrapper">
-        {ingredients && (
-          <Table
-            tableData={ingredients}
-            className="ingredients-table"
-            trClass="ingredients-table-row"
-            tdClass="ingredients-table-row__item"
-            thClass="ingredients-table-header"
-          />
-        )}
-        <div className="actions-bar">
-          {ingredients &&
-            ingredients.map((item: any) => (
-              <div className="actions-bar-cell">
-                <DeleteItem
-                  key={item.id}
-                  id={item.id}
-                  getData={getIngredients}
-                />
-              </div>
-            ))}
-        </div>
-      </div>
-=======
       <Button
         className="ingredients-table_add-ingredient-button"
         label="add ingredient"
@@ -104,7 +69,6 @@ function Ingredients() {
           getData={getIngredients}
         />
       )}
->>>>>>> 00e9b52... [GMA-28] add ingredient basic button
     </>
   );
 }
