@@ -1,4 +1,3 @@
-DROP TABLE IF EXISTS ingredients;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users(
@@ -7,6 +6,8 @@ CREATE TABLE users(
       password VARCHAR(255) NOT NULL,
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
+
+DROP TABLE IF EXISTS ingredients;
 
   CREATE TABLE ingredients(
       id SERIAL PRIMARY KEY,
