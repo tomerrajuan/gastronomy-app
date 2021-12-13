@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import Table from "../organism/Table";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import Input from "../atom/Input";
 import DeleteItem from "../molecules/DeleteItem";
@@ -49,8 +48,6 @@ function Ingredients() {
       abort = true;
     };
   }, [searchInput]);
-
-  const handleAddIngredient = () => {};
 
   return (
     <>
