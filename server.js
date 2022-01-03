@@ -19,6 +19,17 @@ app.get("/ingredients", (req, res) => {
     });
 });
 
+app.post("/delete/ingredient", function (req, res) {
+  db.deleteIngredient(req.body.itemId, 1)
+    .then((result) => {
+      res.json({ success: true });
+    })
+    .catch((e) => {
+      console.log("error in deleting item", e);
+      res.json({ success: false });
+    });
+});
+
 app.listen(3000, () => {
   console.log(`Example app listening at http://localhost:3000`);
 });
