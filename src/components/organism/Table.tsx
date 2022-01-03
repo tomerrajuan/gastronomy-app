@@ -21,7 +21,7 @@ function Table({
   tdClass,
   thClass,
 }: Props): ReactElement {
-  const data = React.useMemo(() => tableData, []);
+  const data = React.useMemo(() => tableData, [tableData]);
 
   const columns = React.useMemo<Column<DocumentData>[]>(
     () => ingredientsCol,
@@ -37,14 +37,23 @@ function Table({
         <table className={className} {...getTableProps()}>
           <thead>
             {headerGroups.map((headerGroup) => (
-              <TableHeader headerGroup={headerGroup} className={thClass} />
+              <TableHeader
+                key={headerGroup.id}
+                headerGroup={headerGroup}
+                className={thClass}
+              />
             ))}
           </thead>
           <tbody {...getTableBodyProps()}>
             {rows.map((row) => {
               prepareRow(row);
               return (
-                <TableRow rowItem={row} trClass={trClass} tdClass={tdClass} />
+                <TableRow
+                  key={row.id}
+                  rowItem={row}
+                  trClass={trClass}
+                  tdClass={tdClass}
+                />
               );
             })}
           </tbody>
