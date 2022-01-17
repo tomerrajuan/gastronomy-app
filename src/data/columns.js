@@ -1,3 +1,5 @@
+import { format } from "date-fns";
+
 export const ingredientsCol = [
   {
     Header: "Item",
@@ -23,5 +25,8 @@ export const ingredientsCol = [
   {
     Header: "Updated",
     accessor: "created_at",
+    Cell: ({ value }) => {
+      return format(new Date(value), "dd.MM.yyyy");
+    },
   },
 ];
