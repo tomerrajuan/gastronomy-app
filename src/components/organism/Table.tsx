@@ -1,6 +1,6 @@
 import { DocumentData } from "firebase/firestore";
 import React, { ReactElement } from "react";
-import { Column, useTable } from "react-table";
+import { Column, useTable, useSortBy } from "react-table";
 import { ingredientsCol } from "../../data/columns";
 import TableHeader from "../molecules/TableHeader";
 import TableRow from "../molecules/TableRow";
@@ -29,7 +29,7 @@ function Table({
   );
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data });
+    useTable({ columns, data }, useSortBy);
 
   return (
     <>
