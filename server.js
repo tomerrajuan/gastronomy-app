@@ -30,6 +30,17 @@ app.post("/delete/ingredient", function (req, res) {
     });
 });
 
+app.get("/ingredients/search/:query", (req, res) => {
+  db.getIngredientsByQuery(req.params.query)
+    .then((result) => {
+      console.log("searched items", result.rows);
+      res.json(result.rows);
+    })
+    .catch((err) => {
+      console.log("Error at searching items: ", err);
+    });
+});
+
 app.listen(3000, () => {
   console.log(`Example app listening at http://localhost:3000`);
 });
