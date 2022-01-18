@@ -5,7 +5,7 @@ import axios from "axios";
 function Ingredients() {
   const [ingredients, setIngredients] = useState<Array<Object>>();
 
-  useEffect(() => {
+  const getIngredients = () => {
     axios
       .get("http://localhost:3000/ingredients")
       .then(({ data }) => {
@@ -15,11 +15,14 @@ function Ingredients() {
       .catch((err) => {
         console.log("cant find ingredients", err);
       });
+  };
+
+  useEffect(() => {
+    getIngredients();
   }, []);
 
   return (
-    <div>
-      <p>+ Add ingredient</p>
+    <>
       {ingredients && (
         <Table
           tableData={ingredients}
@@ -27,9 +30,10 @@ function Ingredients() {
           trClass="ingredients-table-row"
           tdClass="ingredients-table-row__item"
           thClass="ingredients-table-header"
+          getData={getIngredients}
         />
       )}
-    </div>
+    </>
   );
 }
 
