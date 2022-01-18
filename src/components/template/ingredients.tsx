@@ -22,7 +22,7 @@ function Ingredients() {
   }, []);
 
   return (
-    <div className="layout">
+    <>
       {ingredients && (
         <Table
           tableData={ingredients}
@@ -33,7 +33,7 @@ function Ingredients() {
           getData={getIngredients}
         />
       )}
-    </div>
+    </>
   );
 }
 
