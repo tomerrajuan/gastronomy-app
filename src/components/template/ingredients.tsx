@@ -22,7 +22,7 @@ function Ingredients() {
   }, []);
 
   return (
-    <div className="page-layout">
+    <div className="layout">
       {ingredients && (
         <Table
           tableData={ingredients}
