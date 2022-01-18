@@ -8,19 +8,23 @@ interface Props {
 }
 
 function DeleteItem({ id, getData }: Props): ReactElement {
-  const handleDelete = () => {
+  const handleDeleteTableItem = () => {
     axios
       .post("http://localhost:3000/delete/ingredient", { itemId: id })
       .then(() => {
         getData();
       })
       .catch((err) => {
-        console.log("cant delete item", err);
+        console.log("error at delete table item", err);
       });
   };
 
   return (
-    <Button className="delete-btn" label="Delete" onClick={handleDelete} />
+    <Button
+      className="btn-delete"
+      label="Delete"
+      onClick={handleDeleteTableItem}
+    />
   );
 }
 
