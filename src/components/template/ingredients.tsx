@@ -20,11 +20,8 @@ function Ingredients() {
   };
 
   useEffect(() => {
-    getIngredients();
-  }, []);
-
-  useEffect(() => {
     let abort: Boolean;
+    // if input is empty request the table from the database again
     if (searchInput === "") {
       getIngredients();
     }
@@ -33,8 +30,7 @@ function Ingredients() {
         .get(`http://localhost:3000/ingredients/search/${searchInput}`)
         .then((items: any) => {
           if (!abort) {
-            if (items.data.length === 0) {
-              console.log("error");
+            if (!items.data.length) {
               setError(true);
             } else {
               setError(false);
