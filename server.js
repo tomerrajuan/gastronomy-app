@@ -33,7 +33,6 @@ app.post("/delete/ingredient", function (req, res) {
 app.get("/ingredients/search/:query", (req, res) => {
   db.getIngredientsByQuery(req.params.query)
     .then((result) => {
-      console.log("searched items", result.rows);
       res.json(result.rows);
     })
     .catch((err) => {
