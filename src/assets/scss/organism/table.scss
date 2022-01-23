@@ -9,8 +9,20 @@
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
-.table-actions {
+.actions {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top: 40px;
+}
+.action-cell {
+  height: 56.55px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.wraper {
+  display: flex;
+  flex-direction: row;
 }
