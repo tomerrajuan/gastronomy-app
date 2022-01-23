@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState } from "react";
 import Button from "../atom/Button";
 
 interface Props {
@@ -8,7 +8,9 @@ interface Props {
 }
 
 function DeleteItem({ id, getData }: Props): ReactElement {
-  const handleDeleteTableItem = () => {
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+
+  const handleDeleteItem = () => {
     axios
       .post("http://localhost:3000/delete/ingredient", { itemId: id })
       .then(() => {
@@ -19,12 +21,29 @@ function DeleteItem({ id, getData }: Props): ReactElement {
       });
   };
 
+  const toggleDeletePopup = () => {
+    setIsVisible(!isVisible);
+  };
+
+  const handleCancelDeleteItem = () => {
+    setIsVisible(false);
+  };
+
   return (
-    <Button
-      className="btn-delete"
-      label="Delete"
-      onClick={handleDeleteTableItem}
-    />
+    <>
+      <Button
+        className="btn-delete"
+        label="Delete"
+        onClick={toggleDeletePopup}
+      />
+      {isVisible && (
+        <div>
+          Are you sure you want to delete this item?
+          <Button className="" label="✕" onClick={handleCancelDeleteItem} />
+          <Button className="" label="✓" onClick={handleDeleteItem} />
+        </div>
+      )}
+    </>
   );
 }
 
