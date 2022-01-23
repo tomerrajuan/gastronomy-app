@@ -22,3 +22,9 @@ module.exports.deleteIngredient = (itemId, userId) => {
   const params = [itemId, userId];
   return pool.query(q, params);
 };
+
+module.exports.getIngredientsByQuery = (query) => {
+  return pool.query(`SELECT * FROM ingredients WHERE item ILIKE $1`, [
+    query + "%",
+  ]);
+};

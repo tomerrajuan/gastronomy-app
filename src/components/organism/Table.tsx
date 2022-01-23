@@ -23,7 +23,7 @@ function Table({
   thClass,
   getData,
 }: Props): ReactElement {
-  const data = React.useMemo(() => tableData, [tableData]);
+  const data = React.useMemo(() => [...tableData], [tableData]);
 
   const columns = React.useMemo<Column<DocumentData>[]>(
     () => ingredientsCol,
