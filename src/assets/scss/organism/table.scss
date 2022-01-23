@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
 
+.wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
 .ingredients-table {
   border-collapse: collapse;
   margin: 25px 0;
@@ -15,14 +20,9 @@
   justify-content: center;
   margin-top: 40px;
 }
-.action-cell {
-  height: 56.55px;
+.actions-cell {
+  height: 26px;
+  padding: 15px 18px;
   display: flex;
   align-items: center;
-  padding-left: 10px;
-}
-
-.wraper {
-  display: flex;
-  flex-direction: row;
 }
