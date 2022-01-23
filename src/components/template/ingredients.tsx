@@ -68,10 +68,10 @@ function Ingredients() {
             thClass="ingredients-table-header"
           />
         )}
-        <div className="actions">
+        <div className="actions-bar">
           {ingredients &&
             ingredients.map((item: any) => (
-              <div className="actions-cell">
+              <div className="actions-bar-cell">
                 <DeleteItem
                   key={item.id}
                   id={item.id}
