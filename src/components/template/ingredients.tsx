@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Table from "../organism/Table";
 import axios from "axios";
 import Input from "../atom/Input";
+import DeleteItem from "../molecules/DeleteItem";
 
 function Ingredients() {
   const [ingredients, setIngredients] = useState<Array<Object>>();
@@ -56,16 +57,29 @@ function Ingredients() {
         placeholder="Search..."
       />
       {error && <p>No item is found!</p>}
-      {ingredients && (
-        <Table
-          tableData={ingredients}
-          className="ingredients-table"
-          trClass="ingredients-table-row"
-          tdClass="ingredients-table-row__item"
-          thClass="ingredients-table-header"
-          getData={getIngredients}
-        />
-      )}
+      <div className="wraper">
+        {ingredients && (
+          <Table
+            tableData={ingredients}
+            className="ingredients-table"
+            trClass="ingredients-table-row"
+            tdClass="ingredients-table-row__item"
+            thClass="ingredients-table-header"
+          />
+        )}
+        <div className="actions">
+          {ingredients &&
+            ingredients.map((item: any) => (
+              <div className="action-cell">
+                <DeleteItem
+                  key={item.id}
+                  id={item.id}
+                  getData={getIngredients}
+                />
+              </div>
+            ))}
+        </div>
+      </div>
     </>
   );
 }
