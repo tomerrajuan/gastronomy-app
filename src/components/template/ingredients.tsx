@@ -57,7 +57,8 @@ function Ingredients() {
         placeholder="Search..."
       />
       {error && <p>No item is found!</p>}
-      <div className="wraper">
+
+      <div className="wrapper">
         {ingredients && (
           <Table
             tableData={ingredients}
@@ -70,7 +71,7 @@ function Ingredients() {
         <div className="actions">
           {ingredients &&
             ingredients.map((item: any) => (
-              <div className="action-cell">
+              <div className="actions-cell">
                 <DeleteItem
                   key={item.id}
                   id={item.id}
