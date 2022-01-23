@@ -12,7 +12,6 @@ interface Props {
   trClass?: string;
   tdClass?: string;
   thClass?: string;
-  getData: () => void;
 }
 
 function Table({
@@ -21,7 +20,6 @@ function Table({
   trClass,
   tdClass,
   thClass,
-  getData,
 }: Props): ReactElement {
   const data = React.useMemo(() => [...tableData], [tableData]);
 
@@ -55,7 +53,6 @@ function Table({
                   rowItem={row}
                   trClass={trClass}
                   tdClass={tdClass}
-                  getData={getData}
                 />
               );
             })}

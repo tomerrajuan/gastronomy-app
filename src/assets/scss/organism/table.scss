@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
 
+.wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
 .ingredients-table {
   border-collapse: collapse;
   margin: 25px 0;
@@ -7,10 +12,4 @@
   font-family: "Roboto", sans-serif;
   min-width: 400px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
-
-.table-actions {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }

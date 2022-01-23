@@ -1,18 +1,10 @@
-import DeleteItem from "./DeleteItem";
-
 interface Props {
   trClass?: string;
   tdClass?: string;
   rowItem?: any;
-  getData: () => void;
 }
 
-export default function TableRow({
-  rowItem,
-  trClass,
-  tdClass,
-  getData,
-}: Props) {
+export default function TableRow({ rowItem, trClass, tdClass }: Props) {
   return (
     <tr className={trClass} {...rowItem.getRowProps()}>
       {rowItem.cells.map((cell: any) => (
@@ -20,7 +12,6 @@ export default function TableRow({
           {cell.render("Cell")}
         </td>
       ))}
-      <DeleteItem id={rowItem.original.id} getData={getData} />
     </tr>
   );
 }
