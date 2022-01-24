@@ -40,6 +40,18 @@ app.get("/ingredients/search/:query", (req, res) => {
     });
 });
 
+app.post("/addItem", (req, res) => {
+  const newItem = Object.keys(req.body).map((key) => req.body[key]);
+
+  db.addItemToIngredients(newItem)
+    .then((result) => {
+      res.json(result.rows);
+    })
+    .catch((err) => {
+      console.log("Error at searching items: ", err);
+    });
+});
+
 app.listen(3000, () => {
   console.log(`Example app listening at http://localhost:3000`);
 });
