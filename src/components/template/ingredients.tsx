@@ -72,11 +72,13 @@ function Ingredients() {
           />
         )}
         <div className="actions-bar">
-          <Button
-            className="ingredients-table_add-ingredient-button"
-            label="+"
-            onClick={() => setAddItem(!addItem)}
-          />
+          <div className="actions-bar-cell">
+            <Button
+              className="btn-add-item"
+              label="add item"
+              onClick={() => setAddItem(!addItem)}
+            />
+          </div>
 
           {ingredients &&
             ingredients.map((item: any) => (
