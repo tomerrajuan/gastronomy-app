@@ -33,7 +33,7 @@ function DeleteItem({ id, getData }: Props): ReactElement {
     <>
       <Button className="btn-delete" label="X" onClick={toggleDeletePopup} />
       {isVisible && (
-        <div>
+        <div className="popup-delete">
           Are you sure you want to delete this item?
           <Button className="" label="✕" onClick={handleCancelDeleteItem} />
           <Button className="" label="✓" onClick={handleDeleteItem} />

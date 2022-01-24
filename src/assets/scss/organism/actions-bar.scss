@@ -1,7 +1,7 @@
 .actions-bar {
   display: flex;
   flex-direction: column;
-  width: 50px;
+  min-width: 50px;
 }
 
 .actions-bar-cell {
@@ -26,4 +26,8 @@
   &:last-child {
     border-bottom: 2px solid #1a73e8;
   }
+}
+
+.popup-delete {
+  display: flex;
 }
