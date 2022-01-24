@@ -74,7 +74,7 @@ function Ingredients() {
         <div className="actions-bar">
           <Button
             className="ingredients-table_add-ingredient-button"
-            label="add ingredient"
+            label="+"
             onClick={() => setAddItem(!addItem)}
           />
 
