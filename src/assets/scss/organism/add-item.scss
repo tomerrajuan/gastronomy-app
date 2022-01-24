@@ -1,0 +1,8 @@
+.add-item-form {
+  display: flex;
+
+  & input {
+    display: inline-block;
+    width: auto;
+  }
+}

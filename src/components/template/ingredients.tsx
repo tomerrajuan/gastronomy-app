@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
-import Table from "../organism/Table";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import Input from "../atom/Input";
 import DeleteItem from "../molecules/DeleteItem";
+import Button from "../atom/Button";
+import Table from "../organism/Table";
 
 function Ingredients() {
   const [ingredients, setIngredients] = useState<Array<Object>>();
   const [searchInput, setSearchInput] = useState<String>("");
   const [error, setError] = useState<Boolean>(false);
+  const [addItem, setAddItem] = useState(false);
 
   const getIngredients = () => {
     axios
@@ -52,6 +54,7 @@ function Ingredients() {
   return (
     <>
       <Input
+        className="search-item"
         name={"search"}
         onChange={(event) => setSearchInput(event.target.value)}
         placeholder="Search..."
@@ -66,9 +69,18 @@ function Ingredients() {
             trClass="ingredients-table-row"
             tdClass="ingredients-table-row__item"
             thClass="ingredients-table-header"
+            addItem={addItem}
           />
         )}
         <div className="actions-bar">
+          <div className="actions-bar-cell actions-bar-cell-first">
+            <Button
+              className="btn-add-item"
+              label="+"
+              onClick={() => setAddItem(!addItem)}
+            />
+          </div>
+
           {ingredients &&
             ingredients.map((item: any) => (
               <div className="actions-bar-cell">

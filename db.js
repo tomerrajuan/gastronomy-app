@@ -28,3 +28,10 @@ module.exports.getIngredientsByQuery = (query) => {
     query + "%",
   ]);
 };
+
+exports.addItemToIngredients = function (newItem) {
+  return pool.query(
+    `INSERT INTO ingredients (user_id, item, unit, price, supplier, category) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
+    newItem,
+  );
+};

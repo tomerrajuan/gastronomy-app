@@ -1,9 +1,11 @@
 import { DocumentData } from "firebase/firestore";
-import React, { ReactElement } from "react";
 import { Column, useTable, useSortBy } from "react-table";
+import React, { ReactElement, useEffect, useRef, useState } from "react";
 import { ingredientsCol } from "../../data/columns";
 import TableHeader from "../molecules/TableHeader";
 import TableRow from "../molecules/TableRow";
+import Button from "../atom/Button";
+import AddItem from "../molecules/AddItem";
 
 // TODO: remove optional props
 interface Props {
@@ -12,6 +14,7 @@ interface Props {
   trClass?: string;
   tdClass?: string;
   thClass?: string;
+  addItem: boolean;
 }
 
 function Table({
@@ -20,6 +23,7 @@ function Table({
   trClass,
   tdClass,
   thClass,
+  addItem,
 }: Props): ReactElement {
   const data = React.useMemo(() => [...tableData], [tableData]);
 
@@ -31,19 +35,41 @@ function Table({
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data }, useSortBy);
 
+  const [tableWidth, setTableWidth] = useState(null);
+
+  const tableRef = useRef<any>();
+
+  // check width of table for addItem width
+  useEffect(() => {
+    const tableWidth = tableRef.current.offsetWidth;
+    if (tableWidth) {
+      setTableWidth(tableWidth);
+    }
+  }, [tableRef]);
+
   return (
     <>
+      {addItem && (
+        <AddItem
+          className={"add-item-form"}
+          rowItem={rows[0]}
+          columns={columns}
+          tableWidth={tableWidth}
+        />
+      )}
+
       {data && (
-        <table className={className} {...getTableProps()}>
+        <table className={className} {...getTableProps()} ref={tableRef}>
           <thead>
-            {headerGroups.map((headerGroup) => (
+            {headerGroups.map((headerGroup, idx) => (
               <TableHeader
-                key={headerGroup.id}
+                key={idx}
                 headerGroup={headerGroup}
                 className={thClass}
               />
             ))}
           </thead>
+
           <tbody {...getTableBodyProps()}>
             {rows.map((row) => {
               prepareRow(row);
