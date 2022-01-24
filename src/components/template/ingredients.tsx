@@ -54,6 +54,7 @@ function Ingredients() {
   return (
     <>
       <Input
+        className="search-item"
         name={"search"}
         onChange={(event) => setSearchInput(event.target.value)}
         placeholder="Search..."
@@ -72,10 +73,10 @@ function Ingredients() {
           />
         )}
         <div className="actions-bar">
-          <div className="actions-bar-cell">
+          <div className="actions-bar-cell actions-bar-cell-first">
             <Button
               className="btn-add-item"
-              label="add item"
+              label="+"
               onClick={() => setAddItem(!addItem)}
             />
           </div>
