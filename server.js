@@ -32,10 +32,6 @@ app.post("/delete/ingredient", function (req, res) {
 
 app.get("/ingredients/search/:query", (req, res) => {
   db.getIngredientsByQuery(req.params.query)
-app.post("/addItem", (req, res) => {
-  const newItem = Object.keys(req.body).map((key) => req.body[key]);
-
-  db.addItemToIngredients(newItem)
     .then((result) => {
       res.json(result.rows);
     })
