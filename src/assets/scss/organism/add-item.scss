@@ -1,8 +1,15 @@
 .add-item-form {
   display: flex;
+  position: absolute;
 
   & input {
     display: inline-block;
     width: auto;
+    height: 43px;
+    max-width: 118px;
+  }
+
+  & button {
+    width: 50px;
   }
 }
