@@ -14,6 +14,7 @@ interface Props {
   trClass?: string;
   tdClass?: string;
   thClass?: string;
+  addItem: boolean;
 }
 
 function Table({
@@ -22,6 +23,7 @@ function Table({
   trClass,
   tdClass,
   thClass,
+  addItem,
 }: Props): ReactElement {
   const data = React.useMemo(() => [...tableData], [tableData]);
 
@@ -47,12 +49,6 @@ function Table({
 
   return (
     <>
-      <Button
-        className="ingredients-table_add-ingredient-button"
-        label="add ingredient"
-        onClick={() => setAddItem(!addItem)}
-      />
-
       {addItem && (
         <AddItem
           className={"add-item-form"}

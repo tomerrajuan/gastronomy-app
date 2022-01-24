@@ -3,11 +3,13 @@ import axios from "axios";
 import Input from "../atom/Input";
 import DeleteItem from "../molecules/DeleteItem";
 import Button from "../atom/Button";
+import Table from "../organism/Table";
 
 function Ingredients() {
   const [ingredients, setIngredients] = useState<Array<Object>>();
   const [searchInput, setSearchInput] = useState<String>("");
   const [error, setError] = useState<Boolean>(false);
+  const [addItem, setAddItem] = useState(false);
 
   const getIngredients = () => {
     axios
@@ -51,21 +53,43 @@ function Ingredients() {
 
   return (
     <>
-      <Button
-        className="ingredients-table_add-ingredient-button"
-        label="add ingredient"
-        onClick={handleAddIngredient}
+      <Input
+        name={"search"}
+        onChange={(event) => setSearchInput(event.target.value)}
+        placeholder="Search..."
       />
-      {ingredients && (
-        <Table
-          tableData={ingredients}
-          className="ingredients-table"
-          trClass="ingredients-table-row"
-          tdClass="ingredients-table-row__item"
-          thClass="ingredients-table-header"
-          getData={getIngredients}
-        />
-      )}
+      {error && <p>No item is found!</p>}
+
+      <div className="wrapper">
+        {ingredients && (
+          <Table
+            tableData={ingredients}
+            className="ingredients-table"
+            trClass="ingredients-table-row"
+            tdClass="ingredients-table-row__item"
+            thClass="ingredients-table-header"
+            addItem={addItem}
+          />
+        )}
+        <div className="actions-bar">
+          <Button
+            className="ingredients-table_add-ingredient-button"
+            label="add ingredient"
+            onClick={() => setAddItem(!addItem)}
+          />
+
+          {ingredients &&
+            ingredients.map((item: any) => (
+              <div className="actions-bar-cell">
+                <DeleteItem
+                  key={item.id}
+                  id={item.id}
+                  getData={getIngredients}
+                />
+              </div>
+            ))}
+        </div>
+      </div>
     </>
   );
 }
