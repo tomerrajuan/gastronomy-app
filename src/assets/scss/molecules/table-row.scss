@@ -3,23 +3,23 @@
     background-color: #1a73e8;
     color: #ffffff;
     text-align: center;
-    padding: 12px 15px;
+    padding: rem(12) rem(15);
   }
 
   &-row {
-    border-bottom: 1px solid #dddddd;
+    border-bottom: rem(1) solid #dddddd;
     &__item {
-      min-width: 50px;
-      max-width: 200px;
-      height: 26px;
-      padding: 15px 18px;
+      min-width: rem(50);
+      max-width: rem(200);
+      height: rem(26);
+      padding: rem(15) rem(18);
       text-align: center;
     }
     &:nth-of-type(even) {
       background-color: #f3f3f3;
     }
     &:last-of-type {
-      border-bottom: 2px solid #1a73e8;
+      border-bottom: rem(2) solid #1a73e8;
     }
     &:hover {
       // color: #1a73e8;
