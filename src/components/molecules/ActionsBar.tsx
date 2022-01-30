@@ -1,5 +1,10 @@
 import axios from "axios";
 import React, { ReactElement, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  SelectIsAddItemForm,
+  setIsAddItemForm,
+} from "../../redux/slices/uiSlice";
 import Button from "../atom/Button";
 import DeleteItem from "./DeleteItem";
 
@@ -10,7 +15,9 @@ interface Props {
 }
 
 export default function ActionsBar({ rowItems, getData }: Props): ReactElement {
-  const [addItem, setAddItem] = useState(false);
+  const isAddItemForm = useSelector(SelectIsAddItemForm);
+
+  const dispatch = useDispatch();
 
   return (
     <div className="actions-bar">
@@ -18,7 +25,7 @@ export default function ActionsBar({ rowItems, getData }: Props): ReactElement {
         <Button
           className="btn-add-item"
           label="+"
-          onClick={() => setAddItem(!addItem)}
+          onClick={() => dispatch(setIsAddItemForm(!isAddItemForm))}
         />
       </div>
 
