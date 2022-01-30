@@ -52,7 +52,6 @@ function Table({
       {addItem && (
         <AddItem
           className={"add-item-form"}
-          rowItem={rows[0]}
           columns={columns}
           tableWidth={tableWidth}
         />
