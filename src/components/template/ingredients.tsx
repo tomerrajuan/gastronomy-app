@@ -13,7 +13,7 @@ function Ingredients() {
 
   const getIngredients = () => {
     axios
-      .get("http://localhost:3000/ingredients")
+      .get("http://localhost:3001/ingredients")
       .then(({ data }) => {
         setIngredients(data);
       })
@@ -30,7 +30,7 @@ function Ingredients() {
     }
     if (searchInput) {
       axios
-        .get(`http://localhost:3000/ingredients/search/${searchInput}`)
+        .get(`http://localhost:3001/ingredients/search/${searchInput}`)
         .then((items: any) => {
           if (!abort) {
             if (!items.data.length) {
@@ -53,46 +53,49 @@ function Ingredients() {
 
   return (
     <>
-      <Input
-        className="search-item"
-        name={"search"}
-        onChange={(event) => setSearchInput(event.target.value)}
-        placeholder="Search..."
-      />
-      {error && <p>No item is found!</p>}
-
-      <div className="wrapper">
-        {ingredients && (
-          <Table
-            tableData={ingredients}
-            className="ingredients-table"
-            trClass="ingredients-table-row"
-            tdClass="ingredients-table-row__item"
-            thClass="ingredients-table-header"
-            addItem={addItem}
+      {ingredients && (
+        <>
+          <Input
+            className="search-item"
+            name={"search"}
+            onChange={(event) => setSearchInput(event.target.value)}
+            placeholder="Search..."
           />
-        )}
-        <div className="actions-bar">
-          <div className="actions-bar-cell actions-bar-cell-first">
-            <Button
-              className="btn-add-item"
-              label="+"
-              onClick={() => setAddItem(!addItem)}
-            />
-          </div>
+          {error && <p>No item is found!</p>}
 
-          {ingredients &&
-            ingredients.map((item: any) => (
-              <div className="actions-bar-cell">
-                <DeleteItem
-                  key={item.id}
-                  id={item.id}
-                  getData={getIngredients}
+          <div className="wrapper">
+            <Table
+              tableData={ingredients}
+              className="ingredients-table"
+              trClass="ingredients-table-row"
+              tdClass="ingredients-table-row__item"
+              thClass="ingredients-table-header"
+              addItem={addItem}
+            />
+
+            <div className="actions-bar">
+              <div className="actions-bar-cell actions-bar-cell-first">
+                <Button
+                  className="btn-add-item"
+                  label="+"
+                  onClick={() => setAddItem(!addItem)}
                 />
               </div>
-            ))}
-        </div>
-      </div>
+
+              {ingredients.map((item: any) => (
+                <div className="actions-bar-cell">
+                  <DeleteItem
+                    key={item.id}
+                    id={item.id}
+                    getData={getIngredients}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
+      {!ingredients && <div></div>}
     </>
   );
 }
