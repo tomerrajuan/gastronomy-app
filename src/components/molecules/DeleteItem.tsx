@@ -12,7 +12,7 @@ function DeleteItem({ id, getData }: Props): ReactElement {
 
   const handleDeleteItem = () => {
     axios
-      .post("http://localhost:3000/delete/ingredient", { itemId: id })
+      .post("http://localhost:3001/delete/ingredient", { itemId: id })
       .then(() => {
         getData();
       })

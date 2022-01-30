@@ -24,7 +24,7 @@ export default function AddItem({ className, columns, tableWidth }: Props) {
 
   const handleAddItem = () => {
     axios
-      .post("http://localhost:3000/addItem", newItem)
+      .post("http://localhost:3001/addItem", newItem)
       .then(({ data }) => {
         console.log("data returned from back", data);
       })
