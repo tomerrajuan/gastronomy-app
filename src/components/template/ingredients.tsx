@@ -4,6 +4,7 @@ import Input from "../atom/Input";
 import DeleteItem from "../molecules/DeleteItem";
 import Button from "../atom/Button";
 import Table from "../organism/Table";
+import ActionsBar from "../molecules/ActionsBar";
 
 function Ingredients() {
   const [ingredients, setIngredients] = useState<Array<Object>>();
@@ -73,25 +74,7 @@ function Ingredients() {
               addItem={addItem}
             />
 
-            <div className="actions-bar">
-              <div className="actions-bar-cell actions-bar-cell-first">
-                <Button
-                  className="btn-add-item"
-                  label="+"
-                  onClick={() => setAddItem(!addItem)}
-                />
-              </div>
-
-              {ingredients.map((item: any) => (
-                <div className="actions-bar-cell">
-                  <DeleteItem
-                    key={item.id}
-                    id={item.id}
-                    getData={getIngredients}
-                  />
-                </div>
-              ))}
-            </div>
+            <ActionsBar rowItems={ingredients} getData={getIngredients} />
           </div>
         </>
       )}
