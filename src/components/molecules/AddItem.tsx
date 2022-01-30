@@ -5,7 +5,6 @@ import Input from "../atom/Input";
 
 interface Props {
   className?: string;
-  rowItem?: any;
   columns: any;
   tableWidth: any;
 }
