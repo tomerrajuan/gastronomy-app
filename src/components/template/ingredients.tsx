@@ -74,7 +74,7 @@ function Ingredients() {
               trClass="ingredients-table-row"
               tdClass="ingredients-table-row__item"
               thClass="ingredients-table-header"
-              addItem={isAddItemForm}
+              showAddItemForm={isAddItemForm}
             />
 
             <ActionsBar rowItems={ingredients} getData={getIngredients} />
