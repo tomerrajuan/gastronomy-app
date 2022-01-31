@@ -1,4 +1,6 @@
-@import "./settings";
+// globals
+@import "./globals/settings";
+@import "./globals/functions/rem";
 
 // molecules
 @import "./molecules/table-row";
