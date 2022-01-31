@@ -1,0 +1,44 @@
+.btn {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  cursor: pointer;
+  border: 0;
+  padding: rem(3) rem(8);
+  font-size: rem(16);
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  label {
+    width: 100%;
+  }
+}
+
+.btn-blue {
+  background-color: #0070d2;
+  border-radius: 0.25rem;
+  padding: rem(10);
+  border: rem(1) solid #0070d2;
+  color: #fff;
+  font-weight: 400;
+  &:hover {
+    background-color: #005fb2;
+    border-color: #005fb2;
+  }
+}
+
+.btn-white {
+  background-color: #fff;
+  border-radius: 0.25rem;
+  border: 1px solid #0070d2;
+  color: #0070d2;
+  font-weight: 400;
+  &:hover {
+    background-color: #0070d2;
+    color: #fff;
+  }
+}

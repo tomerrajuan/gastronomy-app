@@ -31,12 +31,26 @@ function DeleteItem({ id, getData }: Props): ReactElement {
 
   return (
     <>
-      <Button className="btn-delete" label="X" onClick={toggleDeletePopup} />
+      <Button
+        className="btn btn-white btn-delete"
+        label="x"
+        onClick={toggleDeletePopup}
+      />
       {isVisible && (
         <div className="popup-delete">
-          Are you sure you want to delete this item?
-          <Button className="" label="✕" onClick={handleCancelDeleteItem} />
-          <Button className="" label="✓" onClick={handleDeleteItem} />
+          <div className="popup-delete-inner">
+            Are you sure you want to delete this item?
+            <Button
+              className="popup-delete-inner__button btn btn-blue"
+              label="x"
+              onClick={handleCancelDeleteItem}
+            />
+            <Button
+              className="popup-delete-inner__button btn btn-blue"
+              label="✓"
+              onClick={handleDeleteItem}
+            />
+          </div>
         </div>
       )}
     </>
