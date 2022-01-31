@@ -14,7 +14,7 @@ interface Props {
   trClass?: string;
   tdClass?: string;
   thClass?: string;
-  addItem: boolean;
+  showAddItemForm: boolean;
 }
 
 function Table({
@@ -23,7 +23,7 @@ function Table({
   trClass,
   tdClass,
   thClass,
-  addItem,
+  showAddItemForm,
 }: Props): ReactElement {
   const data = React.useMemo(() => [...tableData], [tableData]);
 
@@ -49,10 +49,9 @@ function Table({
 
   return (
     <>
-      {addItem && (
+      {showAddItemForm && (
         <AddItem
           className={"add-item-form"}
-          rowItem={rows[0]}
           columns={columns}
           tableWidth={tableWidth}
         />

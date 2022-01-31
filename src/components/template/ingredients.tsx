@@ -4,12 +4,16 @@ import Input from "../atom/Input";
 import DeleteItem from "../molecules/DeleteItem";
 import Button from "../atom/Button";
 import Table from "../organism/Table";
+import ActionsBar from "../molecules/ActionsBar";
+import { useSelector } from "react-redux";
+import { SelectIsAddItemForm } from "../../redux/slices/uiSlice";
 
 function Ingredients() {
   const [ingredients, setIngredients] = useState<Array<Object>>();
   const [searchInput, setSearchInput] = useState<String>("");
   const [error, setError] = useState<Boolean>(false);
-  const [addItem, setAddItem] = useState(false);
+
+  const isAddItemForm = useSelector(SelectIsAddItemForm);
 
   const getIngredients = () => {
     axios
@@ -70,28 +74,10 @@ function Ingredients() {
               trClass="ingredients-table-row"
               tdClass="ingredients-table-row__item"
               thClass="ingredients-table-header"
-              addItem={addItem}
+              showAddItemForm={isAddItemForm}
             />
 
-            <div className="actions-bar">
-              <div className="actions-bar-cell actions-bar-cell-first">
-                <Button
-                  className="btn-add-item"
-                  label="+"
-                  onClick={() => setAddItem(!addItem)}
-                />
-              </div>
-
-              {ingredients.map((item: any) => (
-                <div className="actions-bar-cell">
-                  <DeleteItem
-                    key={item.id}
-                    id={item.id}
-                    getData={getIngredients}
-                  />
-                </div>
-              ))}
-            </div>
+            <ActionsBar rowItems={ingredients} getData={getIngredients} />
           </div>
         </>
       )}
