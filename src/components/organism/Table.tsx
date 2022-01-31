@@ -4,7 +4,6 @@ import React, { ReactElement, useEffect, useRef, useState } from "react";
 import { ingredientsCol } from "../../data/columns";
 import TableHeader from "../molecules/TableHeader";
 import TableRow from "../molecules/TableRow";
-import Button from "../atom/Button";
 import AddItem from "../molecules/AddItem";
 
 // TODO: remove optional props

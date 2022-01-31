@@ -1,8 +1,10 @@
 import React, { ReactElement } from "react";
+import Icon from "./Icon";
 
 interface Props {
   className?: string;
-  label: string;
+  label?: string;
+  iconSrc?: string;
   type?: "button" | "reset" | "submit";
   disabled?: boolean;
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -11,6 +13,7 @@ interface Props {
 export default function Button({
   className,
   label,
+  iconSrc,
   type = "button",
   disabled = false,
   onClick,
@@ -22,6 +25,7 @@ export default function Button({
       onClick={onClick}
       disabled={disabled}
     >
+      {iconSrc && <Icon src={iconSrc} />}
       <span className="btn__label">{label}</span>
     </button>
   );

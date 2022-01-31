@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from "react";
 import { ReactSVG } from "react-svg";
-import { useSelector } from "react-redux";
 
 export type IconAsset = FunctionComponent<React.SVGProps<SVGSVGElement>>;
 

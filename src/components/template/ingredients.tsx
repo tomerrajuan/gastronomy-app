@@ -1,8 +1,6 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Input from "../atom/Input";
-import DeleteItem from "../molecules/DeleteItem";
-import Button from "../atom/Button";
 import Table from "../organism/Table";
 import ActionsBar from "../molecules/ActionsBar";
 import { useSelector } from "react-redux";

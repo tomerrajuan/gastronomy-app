@@ -1,5 +1,4 @@
-import axios from "axios";
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   SelectIsAddItemForm,
@@ -24,7 +23,7 @@ export default function ActionsBar({ rowItems, getData }: Props): ReactElement {
       <div className="actions-bar-cell actions-bar-cell-first">
         <Button
           className="btn-add-item btn btn-white"
-          label="+"
+          iconSrc={"../../assets/icons/plus.png"}
           onClick={() => dispatch(setIsAddItemForm(!isAddItemForm))}
         />
       </div>
