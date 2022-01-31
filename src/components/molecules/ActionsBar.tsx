@@ -23,7 +23,7 @@ export default function ActionsBar({ rowItems, getData }: Props): ReactElement {
     <div className="actions-bar">
       <div className="actions-bar-cell actions-bar-cell-first">
         <Button
-          className="btn-add-item"
+          className="btn-add-item btn btn-white"
           label="+"
           onClick={() => dispatch(setIsAddItemForm(!isAddItemForm))}
         />

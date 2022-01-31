@@ -1,0 +1,19 @@
+.popup-delete {
+  position: fixed;
+  z-index: 10;
+  width: rem(300);
+  margin-right: rem(265);
+  margin-top: rem(-40);
+  border: rem(1) solid black;
+
+  &-inner {
+    display: flex;
+    align-items: center;
+    padding: rem(20);
+    background-color: #fff;
+
+    &__button {
+      margin: 0 rem(2);
+    }
+  }
+}
